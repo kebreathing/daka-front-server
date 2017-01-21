@@ -1,8 +1,6 @@
 /*
 * JS for jydaka
 */
-var dakaObj = new DakaObj();
-var dakaCalendar = new DakaCalendar();
 $.ajax({
   url : weblink.getUserSigned + "?userId=" + dakaObj.getUserId(),
   type: "GET",
