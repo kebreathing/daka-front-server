@@ -15,3 +15,5 @@ var wxlink = {
            "&openid=" + OPENID + "&lang=zh_CN";
   }
 }
+
+module.exports=wxlink;

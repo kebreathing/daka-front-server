@@ -2,12 +2,13 @@
 * Connect to wx server
 */
 var express = require('express');
-var reqest = require('request');
+var request = require('request');
 var http = require('http');
 var app = express();
 
 // 微信配置
-var wxconf = require('./conf/wx');
+var wxconf = require('./conf/wx.js');
+var webconf= require('./conf/web.js');
 
 /**************设置POST*************************/
 var bodyParser = require("body-parser");
@@ -22,29 +23,31 @@ app.use(express.static(__dirname + "/"));
 
 // A. WX server
 app.get('/wxauth',function(req,res){
-  console.log(req);
   // Exchange accesstoken with code
-  var code = req;
+  var code = req.query.code;
+  console.log("User is coming! " + req.query.code + " at:" + (new Date()));
 
   // code -> Accesstoken
-  request.get({
-    url: wxconf.URL_AccessToken(code),
-  },function(error,response,body){
-    if(!error && response.statusCode == 200){
-      console.log(body);
-      var json = JSON.parse(body);
-      // Accesstoken -> UserInfo
-      request.get({
-        url : wxconf.URL_UserInfo(json.access_token,json.openid)
-      },function(error,response,body){
-        if(!error && response.statusCode == 200){
-          var userinfo = JSON.parse(body);
-          console.log(userinfo);
-        }
-      });
-    }
-  });
-  res.send("hello");
+  if(code != null && code.length != 0)
+  {
+    request.get({
+      url: wxconf.URL_AccessToken(code),
+    },function(error,response,body){
+      if(!error && response.statusCode == 200){
+        var json = JSON.parse(body);
+        console.log("User" + openid + "'s token: " + json.access_token);
+        // Accesstoken -> UserInfo
+        request.get({
+          url : wxconf.URL_UserInfo(json.access_token,json.openid)
+        },function(error,response,body){
+          if(!error && response.statusCode == 200){
+            var userinfo = JSON.parse(body);
+            console.log(userinfo);
+          }
+        });
+      }
+    });
+  }
 })
 
 // Test: WEB-ROOT_DIR, 渲染HTML带Paramaters
