@@ -57,7 +57,7 @@ app.get('/',function(req,res){
 
 
 // 0. 服务器启动
-var server = app.listen(3000,function(){
+var server = app.listen(webconf.port,function(){
   var host = server.address().address;
   var port = server.address().port;
   console.log("Front-Server is start at http://%s:%s",host,port);
