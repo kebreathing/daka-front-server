@@ -1,0 +1,371 @@
+/**
+* For jy-daka index.html
+*/
+@font-face {
+  font-family: "EurostileMN";
+  src: url("./../../font/eurostile_mn_extended.ttf");
+}
+
+.bgkcontainer {
+  background: url('./../../img/dakahome/background.png');
+  background-size: contain;
+  height: 100%;
+}
+
+.part-head {
+  height: 9%;
+}
+
+.part-head-user{
+  margin-top: 4.7%;
+  width: 50%;
+  float:left;
+}
+
+.part-head-user img{
+  width: 23px;
+  height: 23px;
+}
+
+.part-head-user label{
+  height: 28px;
+  line-height: 28px;
+  object-fit: contain;
+  font-family: PingFangSC; /*EurostileMN;*/
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  color: #dddddd;
+  margin-left: 3%;
+}
+
+.part-head-logo {
+  margin-top: 4.7%;
+  width: 50%;
+  float: right;
+}
+
+.part-head-logo img{
+  float: right;
+  margin-top: 3%;
+}
+
+.img-logo {
+  width: 11px;
+  height: 23px;
+  object-fit: contain;
+}
+
+.slogon-logo {
+  width:36px;
+  height: 22px;
+  object-fit: contain;
+  margin-left: 4.6%;
+}
+
+.part-main{
+  text-align: center;
+}
+
+.img-jydk {
+  width: 56%; /*100 - 47.2 = 52.8%*/
+  height: 6.4%;
+  margin-top: 18%; /* 原15.5% - 9% = 6.5%*/
+}
+
+.img-slogon {
+  width: 56%;
+  height: 3.6%;
+  margin-top: 3%;
+}
+
+.img-logo-large {
+  width: 17.4%;
+  height: 20.6%;
+  margin-top: 18%;
+}
+
+/**
+* bgk for daka.html
+*/
+.bgk2container {
+  background: url('./../../img/dakahome/background.png');
+  background-size: contain;
+}
+
+
+.part-page {
+  height: 100%;
+}
+
+.page-graph {
+  height: 58%;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.agraph {
+  height: 95%;
+}
+
+.aline{
+  text-align: center;
+}
+
+.aline img{
+  object-fit: contain;
+  width: 100%;
+  margin-top: 3%;
+}
+
+.page-sign {
+  height: 40%;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.page-sign label {
+  width: 60px;
+  height: 20px;
+  object-fit: contain;
+  font-family: PingFangSC;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  color: #dddddd;
+}
+
+.tdgroup {
+  margin-top: 10px;
+}
+
+.tdgroup table {
+  text-align: center;
+  width: 100%;
+}
+
+.tdgroup table td{
+  width: 35px;
+  height: 35px;
+}
+
+.tdgroup table label{
+    width: 35px;
+    height: 35px;
+    border: solid 1.5px #1d976c;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    font-family: PingFangSC;
+    font-size: 18px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    color: #1d976c;
+}
+
+.abtn{
+  margin-top: 8%;
+  text-align: center;
+}
+
+.jybtn {
+  width: 160px;
+  height: 40px;
+  object-fit: contain;
+  border: solid 1px #93f9b9;
+  background-color: inherit;
+  text-align: center;
+  line-height: 30px;
+  font-family: PingFangSC;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  color: #93f9b9;
+}
+
+.agif {
+  margin-top: 8%;
+  text-align: center;
+}
+
+.agif img{
+  width: 40px;
+  height: 15px;
+}
+
+.aimg {
+  margin-top: 5%;
+  text-align: center;
+}
+
+.aimg img{
+  width: 74.6%;
+}
+
+/* Daka 2*/
+
+.part-calendar{
+  margin-top: 7%;
+}
+
+.slides{
+  text-align: center;
+  vertical-align: middle;
+}
+
+.slides img{
+  width: 27px;
+  height: 27px;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.slides label{
+  width: 130;
+  height: 25px;
+  object-fit: contain;
+  font-family: PingFangSC;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  color: #dddddd;
+}
+
+.table-title{
+  text-align: center;
+  margin-top: 5%;
+}
+
+.table-title table{
+  text-align: center;
+  width: 100%;
+}
+
+.table-title table td {
+  font-family: PingFangSC;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: center;
+  color: #dddddd;
+}
+
+
+.banner-label-front{
+  width: 35px;
+  height: 35px;
+  border: solid 1.5px #1d976c;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px;
+  font-family: PingFangSC;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  color: #000000;
+  background-color: #1d976c;
+}
+
+.banner-label-back{
+  width: 35px;
+  height: 35px;
+  border: solid 1.5px #93f9b9;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px;
+  font-family: PingFangSC;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  color: #000000;
+  background-color: #93f9b9;
+}
+
+.table-banner{  margin-top: 5%; height: 43%;}
+  .table-banner table {  width: 100%; }
+      .table-banner table td{
+          width: 45px;
+          height: 45px;
+          text-align: center;
+          line-height: 30px;
+          font-family: PingFangSC;
+          font-size: 14px;
+          font-weight: 500;
+          font-style: normal;
+          font-stretch: normal;
+          color: #dddddd;
+        }
+
+/* 肌遇 轮播*/
+.banner { position: relative; overflow: auto; }
+    .banner li { list-style: none; }
+        .banner ul li { float: left; }
+
+
+.table-banner-style label {
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  line-height: 30px;
+  font-family: PingFangSC;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  color: #dddddd;
+}
+
+.banner-img {
+  width: 35px;
+  height: 35px;
+}
+
+.canvas-circle {
+  position:absolute;
+  background:inherit;
+}
+.page-labels{
+  position: absolute;
+  text-align: center;
+}
+
+.daka-nums{
+  object-fit: contain;
+  font-family: EurostileMN;
+  font-size: 40px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  color: #93f9b9;
+  text-shadow: 0 0 4px #93f9b9;
+}
+
+.dakasum-label{
+  height: 20px;
+  object-fit: contain;
+  font-family: PingFangSC;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  color: #dddddd;
+}
+
+.dakasum-label2{
+  object-fit: contain;
+  font-family: PingFangSC;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: center;
+  color: #9b9b9b;
+}

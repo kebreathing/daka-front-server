@@ -1,0 +1,153 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <link href="./../css/jy/index.css" rel="stylesheet"/>
+    <link href="./../css/bootstrap.css" rel="stylesheet"/>
+    <link href="./../css/unslider.css" rel="stylesheet"/>
+    <link href="./../css/unslider-dots.css" rel="stylesheet"/>
+    <script src="./../js/jquery.min.js" ></script>
+    <script src="./../js/jquery.flip.min.js"></script>
+    <script src="./../js/bootstrap.min.js" ></script>
+    <script src="./../js/unslider.js"></script>
+    <script src="./../js/jweixin-1.0.0.js"></script>
+    <script src="./../js/jyweixin.js"></script>
+  </head>
+  <body>
+
+    <div class="col-xs-12 col-md-6 col-lg-3 bgk2container">
+        <div class="part-page" id="page1">
+          <div class="part-head">
+            <div class="part-head-user">
+              <img class="user-logo" id="imgUser" src="./../img/daka1/user-head.png"/>
+              <label class="lbl-user" id="lblUser">王董的小秘书</label>
+            </div>
+            <div class="part-head-logo">
+              <img class="slogon-logo" src="./../img/jiyu.png"/>
+              <img class="img-logo" src="./../img/jiyu-logo.png"/>
+            </div>
+          </div>
+          <!-- END: head -->
+          <div class="page-graph">
+            <div class="agraph">
+              <canvas class="canvas-circle" id="circle1" width="300" height="300"></canvas>
+              <canvas class="canvas-circle" id="circle2" width="300" height="300"></canvas>
+              <canvas class="canvas-circle" id="circle3" width="300" height="300"></canvas>
+              <!-- <canvas class="canvas-circle" id="text" width="300" height="300"></canvas> -->
+              <div class="page-labels">
+                <label class="dakasum-label" id="labelSum">累计打卡</label><br>
+                <label class="daka-nums" id="daka-nums"></label><br>
+                <label class="dakasum-label2">今日已有<span id="spanSum"></span>个</label></br>
+                <label class="dakasum-label2">肌友</label>
+              </div>
+            </div>
+
+            <div class="aline">
+              <img src="./../img/daka1/line.png"/>
+            </div>
+          </div>
+          <!-- END: Draw Graph -->
+          <div class="page-sign">
+            <label>训练内容</label>
+            <div class="tdgroup">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="contents" id="tdArm"><label>臂</label></td>
+                      <td class="contents" id="tdLeg"><label>腿</label></td>
+                      <td class="contents" id="tdBreast"><label>胸</label></td>
+                      <td class="contents" id="tdBack"><label>背</label></td>
+                      <td class="contents" id="tdShoulder"><label>肩</label></td>
+                      <td class="contents" id="tdEtc"><label>···</label></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            <div class="abtn">
+              <button class="jybtn" id="btnDaka">打卡</button>
+            </div>
+
+            <div class="agif">
+              <img src="./../img/daka1/daka-next-antimate.gif"/>
+            </div>
+          </div>
+          <!-- END: Sign in -->
+        </div>
+        <!-- END: Page1 -->
+
+        <div class="part-page" id="page2">
+          <div class="part-head">
+            <div class="part-head-user">
+              <img class="user-logo" id="imgUser" src="./../img/daka1/user-head.png"/>
+              <label class="lbl-user" id="lblUser">王董的小秘书</label>
+            </div>
+            <div class="part-head-logo">
+              <img class="slogon-logo" src="./../img/jiyu.png"/>
+              <img class="img-logo" src="./../img/jiyu-logo.png"/>
+            </div>
+          </div>
+
+          <!-- END: Head -->
+          <div class="part-calendar">
+            <div class="part-slide">
+              <div class="slides">
+                <a class="unslider-arrow prev"><img id="imgLeft" src="./../img/daka2/arrow-left.png"/></a>
+                <label class="" id="clabel">2016年12月</label>
+                <a class="unslider-arrow next"><img id="imgRight" src="./../img/daka2/arrow-right.png"/></a>
+              </div>
+              <div class="aline">
+                <img src="./../img/daka1/line.png"/>
+              </div>
+            </div>
+            <!-- END: Slide -->
+
+            <div class="part-table">
+              <div class="table-title">
+                <table>
+                    <tbody>
+                      <tr><td>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td>六</td></tr>
+                    </tbody>
+                </table>
+              </div>
+
+              <div class="table-banner">
+                <div class="banner">
+                  <ul id="banner-list">
+                    <li><div id="banner1"></div></li>
+                    <li><div id="banner2"></div></li>
+                    <li><div id="banner3"></div></li>
+                    <li><div id="banner4"></div></li>
+                    <li><div id="banner5"></div></li>
+                    <li><div id="banner6"></div></li>
+                    <li><div id="banner7"></div></li>
+                    <li><div id="banner8"></div></li>
+                    <li><div id="banner9"></div></li>
+                    <li><div id="banner10"></div></li>
+                    <li><div id="banner11"></div></li>
+                    <li><div id="banner12"></div></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- END: table -->
+
+            <div class="abtn">
+              <button class="jybtn" id="btnShare">分享</button>
+            </div>
+
+            <div class="aimg">
+              <img src="./../img/daka2/slogan2.png"/>
+            </div>
+          </div>
+        </div>
+        <!-- END: Page2 -->
+      </div>
+    </div>
+    <script src="./../js/conf.js"></script>
+    <script src="./../js/web.js"></script>
+    <script src="./../js/calendar.js"></script>
+    <script src="./../js/canvas.js"></script>
+    <script src="./../js/daka.js"></script>
+  </body>
+</html>

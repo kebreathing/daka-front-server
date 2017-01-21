@@ -1,0 +1,130 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <script src="./../js/jquery.min.js" ></script>
+    <script src="./../js/bootstrap.min.js" ></script>
+    <script src="./../js/unslider.js"></script>
+
+    <link href="./../css/bootstrap.css" rel="stylesheet"/>
+    <link href="./../css/unslider.css" rel="stylesheet"/>
+    <link href="./../css/unslider-dots.css" rel="stylesheet"/>
+    <link href="./../css/jy/index.css" rel="stylesheet"/>
+  </head>
+  <body style="background: url('./../img/dakahome/background.png')">
+    <div>
+      <a class="unslider-arrow prev">Prev</a>
+      <a class="unslider-arrow next">Next</a>
+      <br>
+      <div class="banner">
+        <ul>
+          <li><div><img src="./../img/daka1/Oval-5-back.png"/></div></li>
+          <li><div><img src="./../img/daka1/Oval-5-breast.png"/></div></li>
+          <li><div><img src="./../img/daka1/Oval-5-shoulder.png"/></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <canvas id="circle1" width="400" height="400" style="position:absolute;background:inherit;border: 1px solid #000000;"></canvas>
+      <canvas id="circle2" width="400" height="400" style="position:absolute;background:inherit;border: 1px solid #000000;"></canvas>
+      <canvas id="circle3" width="400" height="400" style="position:absolute;background:inherit;border: 1px solid #000000;"></canvas>
+      <canvas id="circle4" width="400" height="400" style="position:absolute;background:inherit;border: 1px solid #000000;"></canvas>
+    </div>
+
+    <label style="color: #ffffff;">Hello World!</label>
+    <label style="font: 1px EurostileMN; color: #ffffff;">Hello World!</label>
+
+    <script src="./../js/canvas.js"></script>
+    <script>
+      function circle(canvasId,imgX1,imgY1,imgX2,imgY2,x,y,radius,endNow){
+        var bg = document.getElementById(canvasId);
+        var ctx= bg.getContext('2d');
+
+        var circ = Math.PI * 2; // 一个圆圈
+        var quart= Math.PI / 2; // 90°角
+        var imd = null;
+
+        ctx.beginPath();
+        ctx.strokeStyle = '#99CC33';
+        ctx.lineCap = 'square';
+        ctx.closePath();
+
+        ctx.fill();
+        ctx.lineWidth = 5.0;
+
+        imd = ctx.getImageData(imgX1,imgY1,imgX2,imgY2);
+
+        function draw(current){
+          ctx.putImageData(imd,0,0);
+          ctx.beginPath();
+          ctx.arc(x,y,radius,-(quart),((circ)*current) - quart,false);
+          ctx.stroke();
+        }
+
+        // 画图方法
+        var t = 0;       // 开始幅度
+        var now = endNow;  // 结束幅度
+        var timer = null;
+        function loadCanvas(now){
+          timer = setInterval(function(){
+            if(t > now){
+              clearInterval(timer);
+            } else {
+              draw(t);
+              t += 0.01;  // 速度
+            }
+          })
+        }
+
+        // 开始画图
+        loadCanvas(now);
+        timer = null;
+      }
+
+
+      $(function() {
+        var h1 = $("#circle1").height();
+        var w1 = $("#circle1").width();
+        var mp1 = new midpoint();
+        mp1.x = w1 / 2;
+        mp1.y = h1 / 2;
+        var canvas1 = new CanvasObj();
+        canvas1.setStrokeStyle("")
+        canvas1.setMidPoint(mp1);
+        canvas1.setCanvasId("circle1");
+        canvas1.setStrokeStyle("#93f9b9")
+        canvas1.setRadius(90);
+        canvas1.setSpeed(0.001);
+        canvas1.setRange(0,0.8);
+        canvas1.setAlpha(0.2);
+        canvas1.createCircle();
+
+
+        var canvas2 = new CanvasObj();
+        canvas2.setStrokeStyle("#93f9b9")
+        canvas2.setMidPoint(mp1);
+        canvas2.setCanvasId("circle2");
+        canvas2.setRadius(80);
+        canvas2.setRange(0,0.6);
+        canvas2.setSpeed(0.002);
+        canvas2.setAlpha(0.4);
+        canvas2.createCircle();
+
+        var canvas3 = new CanvasObj();
+        canvas3.setStrokeStyle("#93f9b9")
+        canvas3.setMidPoint(mp1);
+        canvas3.setCanvasId("circle3");
+        canvas3.setRadius(70);
+        canvas3.setRange(0,0.4);
+        canvas3.setSpeed(0.002);
+        canvas3.setAlpha(0.6);
+        canvas3.createCircle();
+
+
+      });
+    </script>
+
+  </body>
+</html>
