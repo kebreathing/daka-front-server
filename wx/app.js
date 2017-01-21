@@ -41,9 +41,12 @@ app.get('/wxauth',function(req,res){
           url : wxconf.URL_UserInfo(json.access_token,json.openid)
         },function(error,response,body){
           if(!error && response.statusCode == 200){
-            var userinfo = JSON.parse(body);
-            console.log(userinfo);
-            res.render('view',userinfo);
+            var info = JSON.parse(body);
+            res.render('daka',{
+              openid : info.openid,
+              nickname: info.nickname,
+              headimgurl: info.headimgurl
+            });
           }
         });
       }
