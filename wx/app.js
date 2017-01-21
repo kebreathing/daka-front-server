@@ -43,6 +43,7 @@ app.get('/wxauth',function(req,res){
           if(!error && response.statusCode == 200){
             var userinfo = JSON.parse(body);
             console.log(userinfo);
+            res.render('view',userinfo);
           }
         });
       }

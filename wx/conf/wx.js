@@ -12,7 +12,7 @@ var wxlink = {
   },
   URL_UserInfo: function(ACCESS_TOKEN,OPEN_ID){
     return "https://api.weixin.qq.com/sns/userinfo?access_token=" + ACCESS_TOKEN +
-           "&openid=" + OPENID + "&lang=zh_CN";
+           "&openid=" + OPEN_ID + "&lang=zh_CN";
   }
 }
 
