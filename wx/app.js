@@ -36,7 +36,7 @@ app.get('/wxauth/daka',function(req,res){
   // Exchange accesstoken with code
   var code = req.query.code;
   console.log("[用户登录] " + req.query.code + " at:" + (new Date()));
-
+  console.log("缓存信息：" + req.session)
   if(req.session.openid == null){
     // code -> Accesstoken
     if(code != null && code.length != 0)
@@ -50,34 +50,36 @@ app.get('/wxauth/daka',function(req,res){
             },function(error,response,body){
               if(!error && response.statusCode == 200){
                 var info = JSON.parse(body);
-                // 存用户信息至服务器 : 查看用户是否存在
-                request.get({ url: webconf.sql.URL_USERGET(info.openid) },function(error,response,body){
-                  if(body==null || body.length ==0){
-                    if(info == null || info.length == 0) return;
-                    request.post({
-                      url: webconf.sql.URL_USERSAVE(),
-                      json: {
-                        userId : json.openid,
-                        nickname: json.nickname,
-                        sex : json.sex,
-                        city: json.city,
-                        country: json.country,
-                        headimgurl: json.headimgurl
-                      }
-                    },function(error,response,body){
-                      if(!error && response.statusCode == 200) { console.log("用户信息已存."); }
-                      else { console.log("用户信息存储失败"); }
-                    });
-                  } else {
-                    console.log("用户已存在")
-                  }  // END: request post user save
-                }); // END: request get User
-
                 // 获得用户信息，将信息存在session
                 req.session.openid = info.openid;
                 req.session.nickname = info.nickname;
                 req.session.headimgurl = info.headimgurl;
-                res.render('daka',{openid : json.openid,nickname : json.nickname,headimgurl: json.headimgurl});
+                console.log("先渲染 再存储")
+                res.render('daka',{openid : info.openid,nickname : info.nickname,headimgurl: info.headimgurl});
+                // 存用户信息至服务器 : 查看用户是否存在
+                request.get({ url: webconf.sql.URL_USERGET(info.openid) },function(error,response,body){
+                  if(body==null || body.length ==0){
+                    if(info == null || info.length == 0) return;
+                      request.post({
+                        url: webconf.sql.URL_USERSAVE(),
+                        json: {
+                          userId : info.openid,
+                          nickname: info.nickname,
+                          sex : info.sex,
+                          city: info.city,
+                          country: info.country,
+                          headimgurl: info.headimgurl
+                        }
+                      },function(error,response,body){
+                        if(!error && response.statusCode == 200) { console.log("用户信息已存."); }
+                        else { console.log("用户信息存储失败"); }
+                      }); // END: request post user save
+                    } else {
+                      console.log("用户已存在");
+                      return;
+                    }
+                }); // END: request get User
+
               }
             }); // End Request(2)
           }   // End If error
@@ -102,13 +104,11 @@ app.get("/wxauth/daka/session",function(req,res){
     res.send({
       openid: 1,
       nickname: "王董小秘书",
-      headimgurl: "./../img/dakahome/user-head.png"
     });
   } // END: get session
 })
 
 app.get("/sample",function(req,res){
-  console.log("shenmeqingkuang !!")
   res.render('daka');
 });
 

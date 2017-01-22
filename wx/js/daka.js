@@ -15,7 +15,6 @@ initAjax = function(){
       console.log("0. Exception")
     },
     success: function(result){
-      console.log(resule)
       dakaObj.setUserId(result.openid);
       $("#nickname").html(result.nickname);
       $("#imgUser").attr("src",result.headimgurl);
