@@ -79,7 +79,6 @@ app.get('/wxauth/daka',function(req,res){
                       return;
                     }
                 }); // END: request get User
-
               }
             }); // End Request(2)
           }   // End If error
@@ -104,6 +103,7 @@ app.get("/wxauth/daka/session",function(req,res){
     res.send({
       openid: 1,
       nickname: "王董小秘书",
+      headimgurl: "./../img/daka1/user-head.png"
     });
   } // END: get session
 })

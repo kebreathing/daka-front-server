@@ -2,11 +2,11 @@
 * Configuration for web
 */
 var webObj = {
-  shost: "123.207.165.179",
-  sport: 80,
+  shost: "localhost",
+  sport: 8222,
   host: "localhost",
   port: 8080,
-  part: "daka"
+  part: "daka-starter/daka"
 }
 var url = "http://" + webObj.host + ":" + webObj.port + "/" + webObj.part;
 

@@ -56,7 +56,7 @@ var DakaObj = function(){
   this.isContentEmpty = function(){ return content.length == 0; };
 
   this.getSumDate = function() { return sumDate; }
-  this.setSumDate = function(sum) { sumDate = sum; }
+  this.setSumDate = function(sum) { sumDate = sum;  $("#dakanums").html(sum); }
   this.addSum = function(){ return ++sumDate; }
 
   this.getSigned = function() { return signed; }
