@@ -6,6 +6,10 @@
   src: url("./../../font/eurostile_mn_extended.ttf");
 }
 
+@font-face {
+  font-family: "PingFangSC";
+  src: url("./../../font/PingFangSC-Regular.ttf")
+}
 .bgkcontainer {
   background: url('./../../img/dakahome/background.png');
   background-size: contain;
@@ -13,7 +17,7 @@
 }
 
 .part-head {
-  height: 9%;
+  height: 10%;
 }
 
 .part-head-user{
@@ -100,7 +104,7 @@
 }
 
 .page-graph {
-  height: 58%;
+  height: 50%;
   margin-left: 3%;
   margin-right: 3%;
 }
@@ -123,6 +127,7 @@
   height: 40%;
   margin-left: 3%;
   margin-right: 3%;
+  overflow: hidden;
 }
 
 .page-sign label {
@@ -152,14 +157,14 @@
 }
 
 .tdgroup table label{
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     border: solid 1.5px #1d976c;
     border-radius: 50%;
     text-align: center;
-    line-height: 30px;
+    line-height: 27px;
     font-family: PingFangSC;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     font-style: normal;
     font-stretch: normal;
@@ -167,7 +172,7 @@
 }
 
 .abtn{
-  margin-top: 8%;
+  margin-top: 3%;
   text-align: center;
 }
 
@@ -198,7 +203,7 @@
 }
 
 .aimg {
-  margin-top: 5%;
+  margin-top: 3%;
   text-align: center;
 }
 
@@ -209,9 +214,17 @@
 /* Daka 2*/
 
 .part-calendar{
+  height: 90%;
   margin-top: 7%;
 }
 
+.part-slide{
+  height: 10%;
+}
+
+.part-table{
+  height: 58%;
+}
 .slides{
   text-align: center;
   vertical-align: middle;
@@ -265,7 +278,7 @@
   text-align: center;
   line-height: 32px;
   font-family: PingFangSC;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;
@@ -281,7 +294,7 @@
   text-align: center;
   line-height: 32px;
   font-family: PingFangSC;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;

@@ -65,3 +65,16 @@ var DakaObj = function(){
   this.getFriends = function() { return friends; }
   this.setFriends = function(f){ friends = f;    }
 }
+
+
+// 训练内容
+var transformContent = function(obj){
+  if( "胸" == obj)  return "tdBreast"
+  if( "臂" == obj)  return "tdArm"
+  if( "腿" == obj)  return "tdLeg"
+  if( "背" == obj)  return "tdBack"
+  if( "肩" == obj)  return "tdShoulder"
+  if( "臀" == obj)  return "tdButtocks"
+  if( "腹" == obj)  return "tdAbs"
+  if( "--" == obj) return  "tdEtc"
+}

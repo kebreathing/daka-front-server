@@ -76,9 +76,7 @@ $.ajax({
                 if(msg2.length != 0){
                   TBCalendar.setPrintedCalendars(msg2.calendar,msg2.trainCalendar,"banner" + msg2.month);
                   if(dakaObj.getSigned()){
-                    // 亮绿色
-                    $("#card-banner"+dakaObj.month()+"-"+dakaObj.date()).children(".front").children().css("background-color","#93f9b9");
-                    $("#card-banner"+dakaObj.month()+"-"+dakaObj.date()).children(".front").children().css("border-color","#93f9b9");
+                    TBCalendar.setTodayCalendar(dakaObj.month(),dakaObj.date());
                   }
                 }
               }
@@ -91,25 +89,15 @@ $.ajax({
 }); // END: 用户信息初始化
 
 
-// 训练内容
-transformContent = function(obj){
-  if( "胸" == obj)  return "tdBreast"
-  if( "臂" == obj)  return "tdArm"
-  if( "腿" == obj)  return "tdLeg"
-  if( "背" == obj)  return "tdBack"
-  if( "肩" == obj)  return "tdShoulder"
-  if( "..." == obj) return "tdEtc"
-}
-
 // 滑动日历
-initPageCalendar = function(){
+var initPageCalendar = function(){
   for(var i=1;i<=12;i++){
       TBCalendar.setCalendars(dakaObj.year(),i,"banner" + i);
   }
 }
 
 // 日历左右标签
-initSmoothCalendar = function(){
+var initSmoothCalendar = function(){
   if(dakaCalendar.month == 1){
     $("#imgLeft").attr("src","./../img/daka2/arrow-left%20ed.png");
   }
@@ -119,7 +107,7 @@ initSmoothCalendar = function(){
 }
 
 // 设置画布终点
-setCanvasRange = function() {
+var setCanvasRange = function() {
   var sum = dakaObj.getSumDate();
   var unit = sum % 10 / 10; sum = Math.floor(sum/10);
   var decade = sum % 10 / 10; sum = Math.floor(sum/10);
@@ -128,7 +116,7 @@ setCanvasRange = function() {
 }
 
 // 点击训练按钮
-clickSingleContent = function(partialId,content){
+var clickSingleContent = function(partialId,content){
   var id = "#" + partialId;
   console.log(dakaObj.isContentEmpty())
   if(dakaObj.isContentEmpty() == true){
@@ -158,7 +146,7 @@ clickSingleContent = function(partialId,content){
 /*
 * 点击按钮之后，训练内容颜色变化
 */
-setContentChangable = function(bool){
+var setContentChangable = function(bool){
   if(bool){
     $(".contents").each(function(){
       var id = this.id;
@@ -179,7 +167,7 @@ setContentChangable = function(bool){
 }
 
 // Init: 训练计划打卡按钮
-initContentClick = function(){
+var initContentClick = function(){
   // 训练内容点击
   if(dakaObj.getSigned() == true){
     // 不可选
@@ -187,7 +175,6 @@ initContentClick = function(){
     $("#btnDaka").html("今日已打卡");
     $("#" + transformContent(dakaObj.getContent())).children().css("color","#000000");
     $("#" + transformContent(dakaObj.getContent())).children().css("background-color","#9b9b9b");
-    // $("#banner"+dakaObj.month()+"-"+dakaObj.date()).
     return;
   } else {
     // 可选
@@ -195,7 +182,6 @@ initContentClick = function(){
     // 训练按钮点击
     $("#btnDaka").bind("click",function(){
         if(dakaObj.isContentEmpty() == true){ console.log("D. 还没勾选训练内容"); return; }
-
         $.ajax({
           url : weblink.postDetailedSave,
           type: "POST",
@@ -216,7 +202,7 @@ initContentClick = function(){
             console.log("E. Save your detailed information.")
             dakaObj.setSigned(true);
             setContentChangable(false);
-            $("#daka-nums").html(dakaObj.addSum());
+            $("#dakanums").html(dakaObj.addSum());
             $("#btnDaka").text("今日已打卡");
             $("#" + transformContent(dakaObj.getContent())).children().css("color","#000000");
             $("#" + transformContent(dakaObj.getContent())).children().css("background-color","#9b9b9b");
@@ -256,10 +242,8 @@ initContentClick = function(){
                 console.log("F. Save your calendar information.")
                 if(msg.length != 0){
                   TBCalendar.setPrintedCalendars(msg.calendar,msg.trainCalendar,"banner" + msg.month);
-                  if(dakaObj.getSigned()){
-                    $("#card-banner"+dakaObj.month()+"-"+dakaObj.date()).children(".front").children().css("background-color","#93f9b9");
-                    $("#card-banner"+dakaObj.month()+"-"+dakaObj.date()).children(".front").children().css("border-color","#93f9b9");
-                  }
+                  if(dakaObj.getSigned())
+                    TBCalendar.setTodayCalendar(dakaObj.month(),dakaObj.date());
                 }
               }
             });
@@ -284,7 +268,7 @@ initContentClick = function(){
 };
 
 // Init: 滑动日历
-initSlideCal = function(){
+var initSlideCal = function(){
   var unslider = $(".banner").unslider({
     arrows : false,
     index: dakaObj.month() - 1,
@@ -299,7 +283,13 @@ initSlideCal = function(){
           dakaCalendar.banner -= 1;
           unslider.data('unslider').prev();
           $("#clabel").html(dakaCalendar.getTitle());
-          webconnect.getCalendar({userId:dakaObj.getUserId(), year: dakaObj.year(), month: dakaObj.month()});
+          webconnect.getCalendar({
+            userId:dakaObj.getUserId(),
+            year: dakaObj.year(),
+            month: dakaCalendar.month,
+            tmonth: dakaObj.month(),
+            tdate : dakaObj.date()
+          });
           if(dakaCalendar.month == 1)
             $("#imgLeft").attr("src","./../img/daka2/arrow-left%20ed.png");
           else
@@ -311,7 +301,13 @@ initSlideCal = function(){
           dakaCalendar.banner += 1;
           unslider.data('unslider').next();
           $("#clabel").html(dakaCalendar.getTitle());
-          webconnect.getCalendar({userId:dakaObj.getUserId(), year: dakaObj.year(), month: dakaObj.month()});
+          webconnect.getCalendar({
+            userId:dakaObj.getUserId(),
+            year: dakaObj.year(),
+            month: dakaCalendar.month,
+            tmonth: dakaObj.month(),
+            tdate : dakaObj.date()
+          });
           if(dakaCalendar.month == 12)
             $("#imgRight").attr("src","./../img/daka2/arrow-right%20ed.png");
           else
@@ -322,7 +318,7 @@ initSlideCal = function(){
 }
 
 // 画布初始化
-initCanvas = function(){
+var initCanvas = function(){
   setCanvasRange();
   var height = $(".agraph").height();
   var width = $(".agraph").width();
@@ -401,19 +397,11 @@ initCanvas = function(){
   timer = null;
 };
 
-
-// 初始化
-initconf = function(){
-
-}
-
 $(document).ready(function(){
   $("#clabel").html(dakaCalendar.getTitle());
-  // initAjax();          // 设置获取数据
-  console.log(dakaObj)
   initCanvas();           // 设置画布
   initContentClick();     // 设置训练内容点击
   initPageCalendar();     // 设置日历
   initSmoothCalendar();   // 设置日历滑动
   initSlideCal();         // 设置日历翻页
-})
+});

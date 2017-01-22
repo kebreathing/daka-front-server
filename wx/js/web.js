@@ -139,8 +139,12 @@ var webconnect = {
       error: function(XMLHttpRequest, textStatus, errorThrown){
       },
       success: function(msg){
-        if(msg.length != 0)
+        if(msg.length != 0){
           TBCalendar.setPrintedCalendars(msg.calendar,msg.trainCalendar,"banner" + msg.month);
+          if(obj.month == obj.tmonth){
+            TBCalendar.setTodayCalendar(obj.tmonth,obj.tdate)
+          }
+        }
       }
     })
   },

@@ -65,6 +65,11 @@ var TBCalendar = {
       $(id).append(this.setFlipDiv(arrDaka[i],arrCont[i],tableDivId));
       var cardId = "#card-" +tableDivId + "-" + arrDaka[i];
       $(cardId).flip({trigger: 'click', reverse: true});
-    }
+    };
+  },
+  // 当日时间 颜色加深
+  setTodayCalendar: function(month,date){
+    $("#card-banner"+month+"-"+date).children(".front").children().css("background-color","#93f9b9");
+    $("#card-banner"+month+"-"+date).children(".front").children().css("border-color","#93f9b9");
   }
 }
