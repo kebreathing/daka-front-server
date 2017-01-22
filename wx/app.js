@@ -24,7 +24,7 @@ app.engine("html",ejs.__express);
 app.use(express.static(__dirname + "/"));
 app.use(cookieParser());
 app.use(session({
-  serect: 'jydaka20170101',
+  secret: 'jydaka20170101',
   name: 'jydaka',
   cookie: {maxAge : 300000 }, // 1000=1s, 60000=60s, 5mins
   resave: false,
@@ -50,21 +50,27 @@ app.get('/wxauth',function(req,res){
             },function(error,response,body){
               if(!error && response.statusCode == 200){
                 var info = JSON.parse(body);
-                // 存用户信息至服务器
-                request.post({
-                  url: webconf.sql.URL_USERSAVE(),
-                  form: {
-                    id : json.openid,
-                    nickname: json.nickname,
-                    sex : json.sex,
-                    city: json.city,
-                    country: json.country,
-                    headimgurl: json.headimgurl
-                  }
-                },function(error,response,body){
-                  if(!error && response.statusCode == 200) { console.log("用户信息已存."); }
-                  else { console.log(error); }
-                });
+                // 存用户信息至服务器 : 查看用户是否存在
+                request.get({ url: webconf.sql.URL_USERGET(info.openid) },function(error,response,body){
+                  if(body==null || body.length ==0){
+                    request.post({
+                      url: webconf.sql.URL_USERSAVE(),
+                      json: {
+                        userId : json.openid,
+                        nickname: json.nickname,
+                        sex : json.sex,
+                        city: json.city,
+                        country: json.country,
+                        headimgurl: json.headimgurl
+                      }
+                    },function(error,response,body){
+                      if(!error && response.statusCode == 200) { console.log("用户信息已存."); }
+                      else { console.log(error); }
+                    });
+                  } else {
+                    console.log(body)
+                  }  // END: request post user save
+                }); // END: request get User
 
                 // 获得用户信息，将信息存在session
                 req.session.openid = info.openid;
@@ -85,6 +91,21 @@ app.get('/wxauth',function(req,res){
 
 // Test: WEB-ROOT_DIR, 渲染HTML带Paramaters
 app.get('/',function(req,res){
+  req.session.id = "gggg";
+  request.post({
+    url: webconf.sql.URL_USERSAVE(),
+    json: {
+      userId : "json.openid",
+      nickname: "json.nickname",
+      sex : "json.sex",
+      city: "json.city",
+      country: "json.country",
+      headimgurl: "json.headimgurl"
+    }
+  },function(error,response,body){
+    if(!error && response.statusCode == 200) { console.log("用户信息已存."); }
+    else { console.log(response); }
+  });
   res.render('index',{code : '12312'});
 })
 
