@@ -15,14 +15,12 @@
     <script src="./../js/jyweixin.js"></script>
   </head>
   <body>
-
     <div class="col-xs-12 col-md-6 col-lg-3 bgk2container">
         <div class="part-page" id="page1">
           <div class="part-head">
             <div class="part-head-user">
               <img class="user-logo" id="imgUser" src="./../img/user-head.png"/>
-              <label class="lbl-user" id="nickname"></label>
-              <label class="hidden-label" style="display:hidden;" id="nickid"><%=openid%></label>
+              <label class="lbl-user" id="nickname">肌遇打卡小王子</label>
             </div>
             <div class="part-head-logo">
               <img class="slogon-logo" src="./../img/jiyu.png"/>
@@ -145,6 +143,11 @@
         <!-- END: Page2 -->
       </div>
     </div>
+    <script>
+      var openid = <%=openid%>;
+      var nickname = <%=nickname%>;
+      var headimgurl = <%=headimgurl%>;
+    </script>
     <script src="./../js/conf.js"></script>
     <script src="./../js/web.js"></script>
     <script src="./../js/calendar.js"></script>

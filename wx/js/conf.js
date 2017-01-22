@@ -1,7 +1,6 @@
 /**
 * Configuration for daka
 */
-
 // 默认Style
 var defaultStyle = {
   radius: { inner: 90, normal: 103, outter: 116},
@@ -66,9 +65,3 @@ var DakaObj = function(){
   this.getFriends = function() { return friends; }
   this.setFriends = function(f){ friends = f;    }
 }
-
-var dakaObj = new DakaObj();
-var dakaCalendar = new DakaCalendar();
-var openid = $("#nickid").text();
-console.log("nickid:" + openid);
-console.log(<%=nickid%>);
