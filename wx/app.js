@@ -32,7 +32,7 @@ app.use(session({
 }))
 
 // A. WX server
-app.get('/wxauth',function(req,res){
+app.get('/wxauth/daka',function(req,res){
   // Exchange accesstoken with code
   var code = req.query.code;
   console.log("[用户登录] " + req.query.code + " at:" + (new Date()));
@@ -53,6 +53,7 @@ app.get('/wxauth',function(req,res){
                 // 存用户信息至服务器 : 查看用户是否存在
                 request.get({ url: webconf.sql.URL_USERGET(info.openid) },function(error,response,body){
                   if(body==null || body.length ==0){
+                    if(info == null || info.length == 0) return;
                     request.post({
                       url: webconf.sql.URL_USERSAVE(),
                       json: {
@@ -65,10 +66,10 @@ app.get('/wxauth',function(req,res){
                       }
                     },function(error,response,body){
                       if(!error && response.statusCode == 200) { console.log("用户信息已存."); }
-                      else { console.log(error); }
+                      else { console.log("用户信息存储失败"); }
                     });
                   } else {
-                    console.log(body)
+                    console.log("用户已存在")
                   }  // END: request post user save
                 }); // END: request get User
 
@@ -89,32 +90,27 @@ app.get('/wxauth',function(req,res){
   }
 })
 
-// Test: WEB-ROOT_DIR, 渲染HTML带Paramaters
-app.get('/',function(req,res){
-  req.session.id = "gggg";
-  request.post({
-    url: webconf.sql.URL_USERSAVE(),
-    json: {
-      userId : "json.openid",
-      nickname: "json.nickname",
-      sex : "json.sex",
-      city: "json.city",
-      country: "json.country",
-      headimgurl: "json.headimgurl"
-    }
-  },function(error,response,body){
-    if(!error && response.statusCode == 200) { console.log("用户信息已存."); }
-    else { console.log(response); }
-  });
-  res.render('index',{code : '12312'});
+// 获得用户信息
+app.get("/wxauth/daka/session",function(req,res){
+  if(req.session.openid != null ){
+    res.send({
+      openid : req.session.openid,
+      nickname: req.session.nickname,
+      headimgurl: req.session.headimgurl
+    });
+  } else {
+    res.send({
+      openid: 1,
+      nickname: "王董小秘书",
+      headimgurl: "./../img/dakahome/user-head.png"
+    });
+  } // END: get session
 })
 
-
-app.get('/jquery',function(req,res){
-  res.render('daka',{openid : '1231232'});
-})
-
-
+app.get("/sample",function(req,res){
+  console.log("shenmeqingkuang !!")
+  res.render('daka');
+});
 
 // 0. 服务器启动
 var server = app.listen(webconf.test_port,function(){

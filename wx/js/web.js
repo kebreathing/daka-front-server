@@ -2,6 +2,8 @@
 * Configuration for web
 */
 var webObj = {
+  shost: "123.207.165.179",
+  sport: 80,
   host: "localhost",
   port: 8080,
   part: "daka"
@@ -17,7 +19,8 @@ var weblink = {
   getDetailed:   url + "/detailed/get",
   postSumIncre:  url + "/sum/incre",
   postCalBetter: url + "/calendar/better",
-  getCalendar:   url + "/calendar/get"
+  getCalendar:   url + "/calendar/get",
+  getUserSession: "http://" + webObj.shost + ":" + webObj.sport + "/wxauth/daka/session"
 }
 
 /*

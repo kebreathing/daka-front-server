@@ -7,78 +7,88 @@ var dakaCalendar = new DakaCalendar();
 // ajax 获取用户信息
 initAjax = function(){
   $.ajax({
-    url : weblink.getUserSigned + "?userId=" + dakaObj.getUserId(),
+    url : weblink.getUserSession,
     type: "GET",
-    async: false,
+    async: true,
     contentType: "application/json; charset=utf-8",
     error: function(XMLHttpRequest,textStatus,errorThrown){
-      console.log("A. Exception")
+      console.log("0. Exception")
     },
     success: function(result){
-      // console.log("[GetUserSigned]: result is got.");
-      if(result == null || result.length == 0){
-        console.log("A. 没有此用户信息")
-        return;
-      }
-
-      console.log("A. Get the total signed of the user.")
-      dakaObj.setSumDate(result);
-      // Daka Detailed
+      console.log(resule)
+      dakaObj.setUserId(result.openid);
+      $("#nickname").html(result.nickname);
+      $("#imgUser").attr("src",result.headimgurl);
       $.ajax({
-        url : weblink.getDetailed+"?userId="+dakaObj.getUserId()+"&year="+dakaObj.year()
-                   +"&month="+dakaObj.month()+"&date="+dakaObj.date(),
+        url : weblink.getUserSigned + "?userId=" + dakaObj.getUserId(),
         type: "GET",
         async: false,
         contentType: "application/json; charset=utf-8",
-        error: function(XMLHttpRequest, textStatus, errorThrown){
-          console.log("B. Exception")
+        error: function(XMLHttpRequest,textStatus,errorThrown){
+          console.log("A. Exception")
         },
-        success: function(msg){
-          console.log("B. Get the Detailed Daka of today");
-          if(msg.length != 0){
-            dakaObj.setContent(msg.practise);
-            dakaObj.setSigned(true);
-          }
-
-          // 获取总用户签到数量
+        success: function(result){
+          // console.log("[GetUserSigned]: result is got.");
+          if(result == null || result.length == 0){ console.log("A. 没有此用户信息"); return; }
+          dakaObj.setSumDate(result);
+          // Daka Detailed
           $.ajax({
-            url : weblink.getDetailedFriends+"?year="+dakaObj.year()+"&month="+dakaObj.month()+"&date="+dakaObj.date(),
+            url : weblink.getDetailed+"?userId="+dakaObj.getUserId()+"&year="+dakaObj.year()
+                       +"&month="+dakaObj.month()+"&date="+dakaObj.date(),
             type: "GET",
+            async: false,
             contentType: "application/json; charset=utf-8",
             error: function(XMLHttpRequest, textStatus, errorThrown){
-              console.log("H. Exception")
+              console.log("B. Exception")
             },
             success: function(msg){
-              console.log("H. Get the number of the dakaed boys.")
-              dakaObj.setFriends(msg);
-              $("#spanSum").text(msg);
-            }
-          })
-
-          // 获取用户日历
-          $.ajax({
-            url : weblink.getCalendar+"?userId="+dakaObj.getUserId()+"&year="+dakaObj.year()+"&month="+dakaObj.month(),
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            error: function(XMLHttpRequest, textStatus, errorThrown){
-              console.log("C. Exception")
-            },
-            success: function(msg2){
-              console.log("C. Get the trainning calendar.")
-              if(msg2.length != 0){
-                TBCalendar.setPrintedCalendars(msg2.calendar,msg2.trainCalendar,"banner" + msg2.month);
-                if(dakaObj.getSigned()){
-                  // 亮绿色
-                  $("#card-banner"+dakaObj.month()+"-"+dakaObj.date()).children(".front").children().css("background-color","#93f9b9");
-                  $("#card-banner"+dakaObj.month()+"-"+dakaObj.date()).children(".front").children().css("border-color","#93f9b9");
-                }
+              console.log("B. Get the Detailed Daka of today");
+              if(msg.length != 0){
+                dakaObj.setContent(msg.practise);
+                dakaObj.setSigned(true);
               }
+
+              // 获取总用户签到数量
+              $.ajax({
+                url : weblink.getDetailedFriends+"?year="+dakaObj.year()+"&month="+dakaObj.month()+"&date="+dakaObj.date(),
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                error: function(XMLHttpRequest, textStatus, errorThrown){
+                  console.log("H. Exception")
+                },
+                success: function(msg){
+                  console.log("H. Get the number of the dakaed boys.")
+                  dakaObj.setFriends(msg);
+                  $("#spanSum").text(msg);
+                }
+              }); // END: Ajax for User Signed
+
+              // 获取用户日历
+              $.ajax({
+                url : weblink.getCalendar+"?userId="+dakaObj.getUserId()+"&year="+dakaObj.year()+"&month="+dakaObj.month(),
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                error: function(XMLHttpRequest, textStatus, errorThrown){
+                  console.log("C. Exception")
+                },
+                success: function(msg2){
+                  console.log("C. Get the trainning calendar.")
+                  if(msg2.length != 0){
+                    TBCalendar.setPrintedCalendars(msg2.calendar,msg2.trainCalendar,"banner" + msg2.month);
+                    if(dakaObj.getSigned()){
+                      // 亮绿色
+                      $("#card-banner"+dakaObj.month()+"-"+dakaObj.date()).children(".front").children().css("background-color","#93f9b9");
+                      $("#card-banner"+dakaObj.month()+"-"+dakaObj.date()).children(".front").children().css("border-color","#93f9b9");
+                    }
+                  }
+                }
+              }); // END: Ajax for User Calendar
             }
-          });
+          }); // END: Ajax for User detailed
         }
-      });
+      }); // END: Ajax for User info
     }
-  });
+  }); // END: 用户信息初始化
 }
 
 // 训练内容
@@ -393,9 +403,6 @@ initCanvas = function(){
 
 // 初始化
 initconf = function(){
-  dakaObj.setUserId(openid);
-  $("#nickname").html(nickname);
-  $("#imgUser").attr("src",headimgurl);
   $("#clabel").html(dakaCalendar.getTitle());
   initAjax();             // 设置获取数据
   initCanvas();           // 设置画布

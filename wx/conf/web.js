@@ -15,6 +15,9 @@ var conf = {
     URL_USERGET: function(openid){
       return "http://"+this.host+":"+this.port+"/"+this.part+"/user/get?userId=" + openid;
     }
+  },
+  URL_USERSESSION: function(){
+    return "http://locahost:8080/wxauth/daka/session";
   }
 }
 
