@@ -5,7 +5,7 @@
 var defaultStyle = {
   radius: { inner: 90, normal: 103, outter: 116},
   alpha:  { inner: 0.6, normal: 0.4, outter: 0.2},
-  speed:  { inner: 0.005, normal: 0.005, outter: 0.005},
+  speed:  { inner: 0.0005, normal: 0.0005, outter: 0.0005},
   range:  { inner: 0.8, norml: 0.6, outter: 0.4},
   strokeStyle: "#93f9b9",
   lineWidth: 10

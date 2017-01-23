@@ -293,7 +293,7 @@
 .banner-label-back{
   width: 35px;
   height: 35px;
-  border: solid 1.5px #93f9b9;
+  border: solid 1.5px #1d976c;
   border-radius: 50%;
   text-align: center;
   line-height: 32px;
@@ -303,7 +303,7 @@
   font-style: normal;
   font-stretch: normal;
   color: #000000;
-  background-color: #93f9b9;
+  background-color: #1d976c;
 }
 
 .table-banner{  margin-top: 5%; height: 43%;}

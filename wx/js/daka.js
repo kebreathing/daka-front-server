@@ -52,6 +52,7 @@ $.ajax({
             $.ajax({
               url : weblink.getDetailedFriends+"?year="+dakaObj.year()+"&month="+dakaObj.month()+"&date="+dakaObj.date(),
               type: "GET",
+              async: false,
               contentType: "application/json; charset=utf-8",
               error: function(XMLHttpRequest, textStatus, errorThrown){
                 console.log("H. Exception")
@@ -67,6 +68,7 @@ $.ajax({
             $.ajax({
               url : weblink.getCalendar+"?userId="+dakaObj.getUserId()+"&year="+dakaObj.year()+"&month="+dakaObj.month(),
               type: "GET",
+              async: false,
               contentType: "application/json; charset=utf-8",
               error: function(XMLHttpRequest, textStatus, errorThrown){
                 console.log("C. Exception")
@@ -399,8 +401,8 @@ var initCanvas = function(){
 
 $(document).ready(function(){
   $("#clabel").html(dakaCalendar.getTitle());
-  initCanvas();           // 设置画布
   initContentClick();     // 设置训练内容点击
+  initCanvas();           // 设置画布
   initPageCalendar();     // 设置日历
   initSmoothCalendar();   // 设置日历滑动
   initSlideCal();         // 设置日历翻页

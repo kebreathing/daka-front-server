@@ -71,5 +71,7 @@ var TBCalendar = {
   setTodayCalendar: function(month,date){
     $("#card-banner"+month+"-"+date).children(".front").children().css("background-color","#93f9b9");
     $("#card-banner"+month+"-"+date).children(".front").children().css("border-color","#93f9b9");
+    $("#card-banner"+month+"-"+date).children(".back").children().css("border-color","#93f9b9");
+    $("#card-banner"+month+"-"+date).children(".back").children().css("background-color","#93f9b9");
   }
 }
