@@ -104,7 +104,7 @@
 }
 
 .page-graph {
-  height: 50%;
+  height: 55%;
   margin-left: 3%;
   margin-right: 3%;
 }
@@ -172,7 +172,7 @@
 }
 
 .abtn{
-  margin-top: 3%;
+  margin-top: 8%;
   text-align: center;
 }
 
@@ -214,8 +214,8 @@
 /* Daka 2*/
 
 .part-calendar{
-  height: 90%;
-  margin-top: 7%;
+  height: 85%;
+  margin: 5%;
 }
 
 .part-slide{
@@ -224,6 +224,10 @@
 
 .part-table{
   height: 58%;
+}
+
+.part-rest {
+  height: 32%;
 }
 .slides{
   text-align: center;
