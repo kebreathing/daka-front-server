@@ -5,101 +5,104 @@ var dakaObj = new DakaObj();
 var dakaCalendar = new DakaCalendar();
 
 // ajax 获取用户信息
-$.ajax({
-  url : weblink.getUserSession,
-  type: "GET",
-  async: false,
-  contentType: "application/json; charset=utf-8",
-  error: function(XMLHttpRequest,textStatus,errorThrown){
-    console.log("0. Exception")
-  },
-  success: function(result){
-    dakaObj.setUserId(result.openid);
-    $("#nickname").html(result.nickname);
-    $("#imgUser").attr("src",result.headimgurl);
-    // 获得总签到数量
-    $.ajax({
-      url : weblink.getUserSigned + "?userId=" + dakaObj.getUserId(),
-      type: "GET",
-      async: false,
-      contentType: "application/json; charset=utf-8",
-      error: function(XMLHttpRequest,textStatus,errorThrown){
-        console.log("A. Exception")
-      },
-      success: function(result){
-        if(result == null || result.length == 0){ console.log("A. 没有此用户信息"); return; }
-        dakaObj.setSumDate(result);
+function init(){
+  $.ajax({
+    url : weblink.getUserSession,
+    type: "GET",
+    async: false,
+    contentType: "application/json; charset=utf-8",
+    error: function(XMLHttpRequest,textStatus,errorThrown){
+      console.log("0. Exception")
+    },
+    success: function(result){
+      dakaObj.setUserId(result.openid);
+      $("#nickname").html(result.nickname);
+      $("#imgUser").attr("src",result.headimgurl);
+      // 获得总签到数量
+      $.ajax({
+        url : weblink.getUserSigned + "?userId=" + dakaObj.getUserId(),
+        type: "GET",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        error: function(XMLHttpRequest,textStatus,errorThrown){
+          console.log("A. Exception")
+        },
+        success: function(result){
+          if(result == null || result.length == 0){ console.log("A. 没有此用户信息"); return; }
+          dakaObj.setSumDate(result);
 
-        // 训练内容确定
-        $.ajax({
-          url : weblink.getDetailed+"?userId="+dakaObj.getUserId()+"&year="+dakaObj.year()
-                     +"&month="+dakaObj.month()+"&date="+dakaObj.date(),
-          type: "GET",
-          async: false,
-          contentType: "application/json; charset=utf-8",
-          error: function(XMLHttpRequest, textStatus, errorThrown){
-            console.log("B. Exception")
-          },
-          success: function(msg){
-            console.log("B. Get the Detailed Daka of today");
-            if(msg.length != 0){
-              // console.log("已经签到")
-              dakaObj.setContent(msg.practise);
-              dakaObj.setSigned(true);
-            }
-
-            // 获取已经签到了的用户数量
-            $.ajax({
-              url : weblink.getDetailedFriends+"?year="+dakaObj.year()+"&month="+dakaObj.month()+"&date="+dakaObj.date(),
-              type: "GET",
-              async: false,
-              contentType: "application/json; charset=utf-8",
-              error: function(XMLHttpRequest, textStatus, errorThrown){
-                console.log("H. Exception")
-              },
-              success: function(msg){
-                console.log("H. Get the number of the dakaed boys.")
-                dakaObj.setFriends(msg);
-                $("#spanSum").text(msg);
+          // 训练内容确定
+          $.ajax({
+            url : weblink.getDetailed+"?userId="+dakaObj.getUserId()+"&year="+dakaObj.year()
+                       +"&month="+dakaObj.month()+"&date="+dakaObj.date(),
+            type: "GET",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+              console.log("B. Exception")
+            },
+            success: function(msg){
+              console.log("B. Get the Detailed Daka of today");
+              if(msg.length != 0){
+                // console.log("已经签到")
+                dakaObj.setContent(msg.practise);
+                dakaObj.setSigned(true);
               }
-            }); // END: Ajax for User Signed
 
-            // 获取用户日历
-            $.ajax({
-              url : weblink.getCalendar+"?userId="+dakaObj.getUserId()+"&year="+dakaObj.year()+"&month="+dakaObj.month(),
-              type: "GET",
-              async: false,
-              contentType: "application/json; charset=utf-8",
-              error: function(XMLHttpRequest, textStatus, errorThrown){
-                console.log("C. Exception")
-              },
-              success: function(msg2){
-                console.log("C. Get the trainning calendar.")
-                if(msg2.length != 0){
-                  TBCalendar.setPrintedCalendars(msg2.calendar,msg2.trainCalendar,"banner" + msg2.month);
-                  if(dakaObj.getSigned()){
-                    TBCalendar.setTodayCalendar(dakaObj.month(),dakaObj.date());
+              // 获取已经签到了的用户数量
+              $.ajax({
+                url : weblink.getDetailedFriends+"?year="+dakaObj.year()+"&month="+dakaObj.month()+"&date="+dakaObj.date(),
+                type: "GET",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                error: function(XMLHttpRequest, textStatus, errorThrown){
+                  console.log("H. Exception")
+                },
+                success: function(msg){
+                  console.log("H. Get the number of the dakaed boys.")
+                  dakaObj.setFriends(msg);
+                  $("#spanSum").text(msg);
+                }
+              }); // END: Ajax for User Signed
+
+              // 获取用户日历
+              $.ajax({
+                url : weblink.getCalendar+"?userId="+dakaObj.getUserId()+"&year="+dakaObj.year()+"&month="+dakaObj.month(),
+                type: "GET",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                error: function(XMLHttpRequest, textStatus, errorThrown){
+                  console.log("C. Exception")
+                },
+                success: function(msg2){
+                  console.log("C. Get the trainning calendar.")
+                  if(msg2.length != 0){
+                    TBCalendar.setPrintedCalendars(msg2.calendar,msg2.trainCalendar,"banner" + msg2.month);
+                    if(dakaObj.getSigned()){
+                      TBCalendar.setTodayCalendar(dakaObj.month(),dakaObj.date());
+                    }
                   }
                 }
-              }
-            }); // END: Ajax for User Calendar
-          }
-        }); // END: Ajax for User detailed
-      }
-    }); // END: Ajax for User info
-  }
-}); // END: 用户信息初始化
+              }); // END: Ajax for User Calendar
+            }
+          }); // END: Ajax for User detailed
+        }
+      }); // END: Ajax for User info
+    }
+  }); // END: 用户信息初始化
+
+}
 
 
-// 滑动日历
-var initPageCalendar = function(){
+// 默认：滑动日历
+var defaultPageCal = function(){
   for(var i=1;i<=12;i++){
       TBCalendar.setCalendars(dakaObj.year(),i,"banner" + i);
   }
 }
 
-// 日历左右标签
-var initSmoothCalendar = function(){
+// 默认：日历左右标签
+var defaultSmoothCal = function(){
   if(dakaCalendar.month == 1){
     $("#imgLeft").attr("src","./../img/daka2/arrow-left%20ed.png");
   }
@@ -120,7 +123,7 @@ var setCanvasRange = function() {
 // 点击训练按钮
 var clickSingleContent = function(partialId,content){
   var id = "#" + partialId;
-  console.log(dakaObj.isContentEmpty())
+  // console.log(dakaObj.isContentEmpty())
   if(dakaObj.isContentEmpty() == true){
     $(id).children().css("color", "#000000");
     $(id).children().css("border-color", "#93f9b9");
@@ -169,7 +172,7 @@ var setContentChangable = function(bool){
 }
 
 // Init: 训练计划打卡按钮
-var initContentClick = function(){
+var initContentPart = function(){
   // 训练内容点击
   if(dakaObj.getSigned() == true){
     // 不可选
@@ -270,7 +273,7 @@ var initContentClick = function(){
 };
 
 // Init: 滑动日历
-var initSlideCal = function(){
+var defaultSlideCal = function(){
   var unslider = $(".banner").unslider({
     arrows : false,
     index: dakaObj.month() - 1,
@@ -400,10 +403,41 @@ var initCanvas = function(){
 };
 
 $(document).ready(function(){
+  // 基础配置 及 绑定
   $("#clabel").html(dakaCalendar.getTitle());
-  initContentClick();     // 设置训练内容点击
+  defaultPageCal();     // 设置日历
+  defaultSmoothCal();   // 设置日历滑动
+  defaultSlideCal();         // 设置日历翻页
+
+  // 带参数配置
+  init();
+  initContentPart();     // 设置训练内容点击
   initCanvas();           // 设置画布
-  initPageCalendar();     // 设置日历
-  initSmoothCalendar();   // 设置日历滑动
-  initSlideCal();         // 设置日历翻页
+
+  // 上下滑动
+  (new Binder("bindUp",0.2,true,"page1","page2")).bind();
+  (new Binder("bindDown",0.2,false,"page1","page2")).bind();
+  $(".classBindUp").bind("click",function(){
+    $("#page1").removeClass("append-move-down");
+    $("#page2").removeClass("append-move-down");
+    $("#page1").addClass("append-move-up");
+    $("#page2").addClass("append-move-up");
+  });
+
+  $(".classBindDown").bind("click",function(){
+    $("#page1").removeClass("append-move-up");
+    $("#page2").removeClass("append-move-up");
+    $("#page1").addClass("append-move-down");
+    $("#page2").addClass("append-move-down");
+  });
+
+  // 点击分享: 显示
+  $("#btnShare").bind("click",function(){
+    $("#part-share").css("display","block");
+  })
+
+  // 点击分享： 隐藏
+  $("#part-share").bind("click",function(){
+    $("#part-share").css("display","none");
+  })
 });
