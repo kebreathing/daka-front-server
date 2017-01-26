@@ -18,6 +18,8 @@
 }
 
 body{
+  position: fixed;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -101,6 +103,7 @@ body{
 .bgk2container {
   background: url('./../../img/dakahome/background.png');
   background-size: contain;
+  height: 100%;
   overflow: hidden;
 }
 

@@ -31,8 +31,11 @@ var Binder = function(id,percent,updown,upId,downId){
       // 整体向上走
       $("#" + upId).removeClass("append-move-down");
       $("#" + downId).removeClass("append-move-down");
+
       $("#" + upId).addClass("append-move-up");
       $("#" + downId).addClass("append-move-up");
+      // $("#" + downId).css("display","block");
+      // $("#" + upId).css("display","none");
     } else if(diffY >= standardHeight && diffY <= screenHeight && !updown){
       // 整体向下走
       $("#" + upId).removeClass("append-move-up");
