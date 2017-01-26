@@ -1,44 +1,44 @@
 .append-move-down {
   transform:translateY(0%); 	/* IE 9 */
-  transition-duration:1s;
-  transition-timing-function:cubic-bezier(0.1,0.5,0.5,0);
+  transition-duration:0.7s;
+  transition-timing-function:cubic-bezier(0.7,0,0.7,1);
 
   -ms-transform:translateY(0%); 	/* IE 9 */
-  -ms-transition-duration:1s;
-  -ms-transition-timing-function:cubic-bezier(0.1,0.5,0.5,0);
+  -ms-transition-duration:0.7s;
+  -ms-transition-timing-function:cubic-bezier(0.7,0,0.7,1);
 
   -moz-transform:translateY(0%); 	/* Firefox */
-  -moz-transition-duration: 1s;
-  -moz-transition-timing-function: cubic-bezier(0.1,0.5,0.5,0);
+  -moz-transition-duration: 0.7s;
+  -moz-transition-timing-function: cubic-bezier(0.7,0,0.7,1);
 
   -webkit-transform:translateY(0%); /* Safari 和 Chrome */
-  -webkit-transition-duration:1s;
-  -webkit-transition-timing-function:cubic-bezier(0.1,0.5,0.5,0);
+  -webkit-transition-duration:0.7s;
+  -webkit-transition-timing-function:cubic-bezier(0.7,0,0.7,1);
 
   -o-transform:translateY(0%); 	/* Opera */
-  -o-transition-duration:1s;
-  -o-transition-timing-function:cubic-bezier(0.1,0.5,0.5,0);
+  -o-transition-duration:0.7s;
+  -o-transition-timing-function:cubic-bezier(0.7,0,0.7,1);
 }
 
 
 .append-move-up {
   transform:translateY(100%); 	/* IE 9 */
-  transition-duration:1s;
-  transition-timing-function:cubic-bezier(0.1,0.5,0.5,0);
+  transition-duration:0.7s;
+  transition-timing-function:cubic-bezier(0.7,0,0.7,1);
 
   -ms-transform:translateY(-100%); 	/* IE 9 */
-  -ms-transition-duration:1s;
-  -ms-transition-timing-function:cubic-bezier(0.1,0.5,0.5,0);
+  -ms-transition-duration:0.7s;
+  -ms-transition-timing-function:cubic-bezier(0.7,0,0.7,1);
 
   -moz-transform:translateY(-100%); 	/* Firefox */
-  -moz-transition-duration: 1s;
-  -moz-transition-timing-function: cubic-bezier(0.1,0.5,0.5,0);
+  -moz-transition-duration: 0.7s;
+  -moz-transition-timing-function: cubic-bezier(0.7,0,0.7,1);
 
   -webkit-transform:translateY(-100%); /* Safari 和 Chrome */
-  -webkit-transition-duration:1s;
-  -webkit-transition-timing-function:cubic-bezier(0.1,0.5,0.5,0);
+  -webkit-transition-duration:0.7s;
+  -webkit-transition-timing-function:cubic-bezier(0.7,0,0.7,1);
 
   -o-transform:translateY(-100%); 	/* Opera */
-  -o-transition-duration:1s;
-  -o-transition-timing-function:cubic-bezier(0.1,0.5,0.5,0);
+  -o-transition-duration:0.7s;
+  -o-transition-timing-function:cubic-bezier(0.7,0,0.7,1);
 }
