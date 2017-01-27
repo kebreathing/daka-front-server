@@ -1,0 +1,62 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=0"/>
+    <link href="./../css/bootstrap.css" rel="stylesheet"/>
+    <link href="./../css/jy/font.css" rel="stylesheet"/>
+    <link href="./../css/jy/share.css" rel="stylesheet"/>
+    <script src="./../js/jquery.min.js" ></script>
+    <script src="./../js/jquery.flip.min.js"></script>
+    <script src="./../js/bootstrap.min.js" ></script>
+    <script src="./../js/jweixin-1.0.0.js"></script>
+    <script src="./../js/jyweixin.js"></script>
+  </head>
+  <body>
+    <div class="col-xs-12 col-md-6 col-lg-3 bgk2container">
+      <div class="share-page">
+        <div class="share-head"> <!-- 10% -->
+          <div class="part-head-user">
+            <img class="user-logo" id="imgUser" src="./../img/user-head.png"/>
+            <label class="lbl-user" id="nickname">肌遇打卡</label>
+          </div>
+          <div class="part-head-logo">
+            <img class="slogon-logo" src="./../img/jiyu.png"/>
+            <img class="img-logo" src="./../img/jiyu-logo.png"/>
+          </div>
+        </div><!-- END: head -->
+
+        <div class="share-numbers">
+          <label class="daka-sum" id="labelSum">累计打卡</label><br>
+          <div style="text-align:center;">
+            <label class="daka-nums" id="dakanums">0</label><br>
+          </div>
+          <img src="./../img/daka1/line.png"/>
+        </div> <!-- END: Numbers-->
+
+        <div class="share-table">
+          <div class="share-date">
+            <label>2017年1月</label>
+          </div> <!-- END: 年月日-->
+          <div class="share-title">
+            <table>
+                <tbody>
+                  <tr><td>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td>六</td></tr>
+                </tbody>
+            </table>
+          </div> <!-- END: Title-->
+
+          <div class="share-body" id="share-calendar">
+
+          </div> <!-- END: Body -->
+        </div> <!-- END: calendar -->
+
+        <div class="share-adv">
+          <img src="./../img/daka2/slogan2.png" />
+        </div> <!-- END: adv -->
+      </div>
+    </div>
+    <script src="./../js/share/calendar.js"></script>
+    <script src="./../js/share/share.js"></script>
+  </body>
+</html>

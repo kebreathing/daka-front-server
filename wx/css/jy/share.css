@@ -1,0 +1,218 @@
+/**
+* For share.html
+*/
+.bgk2container{
+  background: url('./../../img/dakahome/background.png');
+  background-size: contain;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 确定模块大小 */
+.share-page {
+  height: 100%;
+}
+
+.share-head {
+  height: 10%;
+  width: 100%;
+}
+
+.share-numbers {
+  height: 19%;
+  /*text-align: center;*/
+}
+
+.share-table {
+  height: 60%;
+}
+
+.share-adv {
+  height: 10%;
+  width: 100%;
+  text-align: center;
+  object-fit: contain;
+}
+
+/* Detailed */
+/* 左边 */
+.part-head-user {
+  padding-top: 4.7%;
+  width: 50%;
+  float:left;
+}
+
+.part-head-user img{
+  width: 23px;
+  height: 23px;
+}
+
+.part-head-user label{
+  height: 28px;
+  line-height: 28px;
+  object-fit: contain;
+  font-family: PingFangSC; /*EurostileMN;*/
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  color: #dddddd;
+  margin-left: 3%;
+}
+
+/* 右边 */
+.part-head-logo {
+  padding-top: 4.7%;
+  width: 50%;
+  float: right;
+}
+
+.part-head-logo img{
+  float: right;
+  margin-top: 3%;
+}
+
+.img-logo {
+  width: 11px;
+  height: 23px;
+  object-fit: contain;
+}
+
+.slogon-logo {
+  width:36px;
+  height: 22px;
+  object-fit: contain;
+  margin-left: 4.6%;
+}
+
+/* 打卡数字 */
+.daka-sum {
+  width: 56px;
+  height: 20px;
+  object-fit: contain;
+  font-family: PingFangSC;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #dddddd;
+}
+
+.daka-nums {
+  width: 121px;
+  height: 44px;
+  object-fit: contain;
+  font-family: EurostileMN;
+  font-size: 40px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #93f9b9;
+  text-shadow: 0 0 4px #93f9b9;
+}
+
+.share-numbers img {
+  object-fit: contain;
+  width: 100%;
+  margin-top: 4%;
+}
+
+/* 日历 */
+.share-date {
+  text-align: center;
+  height: 10%;
+}
+
+.share-date label{
+  width: 112px;
+  height: 25px;
+  object-fit: contain;
+  font-family: PingFangSC;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #dddddd;
+}
+
+.share-title{
+  text-align: center;
+  padding-top: 2%;
+  height: 10%;
+}
+
+.share-title table{
+  text-align: center;
+  width: 100%;
+}
+
+.share-title table td {
+  font-family: PingFangSC;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: center;
+  color: #dddddd;
+}
+
+.share-body {
+  height: 80%;
+}
+
+.share-body table td{
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  line-height: 30px;
+  font-family: PingFangSC;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  color: #dddddd;
+}
+
+.banner-label-front{
+  width: 35px;
+  height: 35px;
+  border: solid 1.5px #1d976c;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px;
+  font-family: PingFangSC;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  color: #000000;
+  background-color: #1d976c;
+}
+
+.banner-label-back{
+  width: 35px;
+  height: 35px;
+  border: solid 1.5px #1d976c;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px;
+  font-family: PingFangSC;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  color: #000000;
+  background-color: #1d976c;
+}
+
+/* 广告 */
+.share-adv img {
+  object-fit: cover;
+  width: 80%;
+}

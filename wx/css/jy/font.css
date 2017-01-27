@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "PingFangSC";
+  src: url("./../../font/PingFangSC-Regular.ttf")
+}
+
+@font-face {
+  font-family: "EurostileMN";
+  src: url("./../../font/eurostile_mn_extended.ttf");
+}

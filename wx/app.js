@@ -112,6 +112,10 @@ app.get("/sample",function(req,res){
   res.render('daka');
 });
 
+app.get("/share",function(req,res){
+  res.render('share');
+});
+
 // 0. 服务器启动
 var server = app.listen(webconf.test_port,function(){
   var host = server.address().address;
