@@ -20,6 +20,7 @@ var weblink = {
   postSumIncre:  url + "/sum/incre",
   postCalBetter: url + "/calendar/better",
   getCalendar:   url + "/calendar/get",
+  getInitDaka: url + "/init",
   getUserSession: "http://" + webObj.shost + ":" + webObj.sport + "/wxauth/daka/session"
 }
 
@@ -83,7 +84,6 @@ var webconnect = {
   },
   // 保存用户打卡detailed
   postDetailedSave: function(obj){
-    console.log(obj)
     $.ajax({
       url : weblink.postDetailedSave,
       type: "POST",

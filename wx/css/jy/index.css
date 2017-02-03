@@ -115,8 +115,8 @@ body{
 
 .page-graph {
   height: 55%;
-  margin-left: 3%;
-  margin-right: 3%;
+  /*margin-left: 3%;
+  margin-right: 3%;*/
 }
 
 .agraph {
@@ -135,7 +135,6 @@ body{
 
 .page-sign {
   height: 40%;
-  margin-left: 3%;
   margin-right: 3%;
   overflow: hidden;
 }
@@ -226,11 +225,10 @@ body{
 /* Daka 2*/
 .part-calendar{
   height: 85%;
-  margin: 5%;
 }
 
 .part-slide{
-  height: 10%;
+  height: 6%;
 }
 
 .part-table{
@@ -254,15 +252,14 @@ body{
 }
 
 .slides img{
-  width: 27px;
-  height: 27px;
-  margin-left: 2%;
-  margin-right: 2%;
+  width: 20px;
+  height: 20px;
 }
 
 .slides label{
-  width: 130;
+  width: 130px;
   height: 25px;
+  line-height: 30px;
   object-fit: contain;
   font-family: PingFangSC;
   font-size: 18px;
@@ -299,7 +296,7 @@ body{
   border: solid 1.5px #1d976c;
   border-radius: 50%;
   text-align: center;
-  line-height: 32px;
+  line-height: 35px;
   font-family: PingFangSC;
   font-size: 14px;
   font-weight: 500;
@@ -329,7 +326,7 @@ body{
   .table-banner table {  width: 100%; }
       .table-banner table td{
           width: 45px;
-          height: 45px;
+          height: 35px;
           text-align: center;
           line-height: 30px;
           font-family: PingFangSC;

@@ -20,9 +20,10 @@ var canvaser= {
 
 // Page: 2
 var DakaCalendar = function(){
-  this.year = 2017;
-  this.month= 1;
-  this.banner = 1;
+  var date = new Date();
+  this.year = date.getYear() + 1900;
+  this.month= date.getMonth() + 1;
+  this.banner = date.getMonth() + 1;
   var rightBool = false;
   var rightmax = 12;
   var leftBool = false;
