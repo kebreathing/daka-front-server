@@ -113,7 +113,11 @@ app.get("/sample",function(req,res){
 });
 
 app.get("/share",function(req,res){
-  res.render('share');
+  // 如果参数不够 提示
+  var params = req.query;
+  if(params == null || params.length == 0) res.end("[参数有误]");
+  if(params.openId == null || params.year == null || params.month == null)  res.end("[参数有误]");
+  res.render('share',{openid: params.openId, year:params.year, month:params.month});
 });
 
 // 0. 服务器启动

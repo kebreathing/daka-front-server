@@ -11,8 +11,11 @@ var conf = {
 }
 
 $(document).ready(function(){
+  var openId = $("#openid").text();
+  var year = $("#year").text();
+  var month = $("#month").text();
   $.ajax({
-    url : conf.URL_GET(1,2017,1),
+    url : conf.URL_GET(openId,year,month),
     type: "GET",
     async: false,
     contentType: "application/json; charset=utf-8",

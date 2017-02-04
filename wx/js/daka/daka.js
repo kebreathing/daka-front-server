@@ -426,18 +426,17 @@ function initOneStep(){
         async: false,
         success: function(json){
           if(json == null || json.length == 0) { console.log("不存在此用户信息!"); return; }
-
           dakaObj.setSumDate(json.signed);
           dakaObj.setFriends(json.friends);
           $("#spanSum").text(json.friends);
           $("#slideLabel").html(dakaCalendar.getTitle());
 
-          if(json.detailed.length != 0){
+          if(json.detailed != null && json.detailed.length != 0){
             dakaObj.setContent(json.detailed.practise);
             dakaObj.setSigned(true);
           }
 
-          if(json.calendar.length != 0){
+          if(json.calendar != null && json.calendar.length != 0){
             TBCalendar.setPrintedCalendars(json.calendar.calendar,json.calendar.trainCalendar,"banner" + json.calendar.month);
             if(dakaObj.getSigned()){
               TBCalendar.setTodayCalendar(dakaObj.month(),dakaObj.date());

@@ -61,7 +61,6 @@ var TBCalendar = {
     var arrCont = strContent.split("_");
     for(var i=0;i<arrDaka.length;i++){
       var id = "#" + tableDivId + "-" + arrDaka[i];
-      console.log(id);
       $(id).empty();
       $(id).append(this.setFlipDiv(arrDaka[i],arrCont[i],tableDivId));
       var cardId = "#card-" +tableDivId + "-" + arrDaka[i];

@@ -36,7 +36,7 @@
 
         <div class="share-table">
           <div class="share-date">
-            <label>2017年1月</label>
+            <label><%=year%> 年 <%=month%> 月</label>
           </div> <!-- END: 年月日-->
           <div class="share-title">
             <table>
@@ -54,6 +54,11 @@
         <div class="share-adv">
           <img src="./../img/daka2/slogan2.png" />
         </div> <!-- END: adv -->
+        <div class="hidden-div" style="display:none;">
+          <label id="openid"><%=openid%></label>
+          <label id="year"><%=year%></label>
+          <label id="month"><%=month%></label>
+        </div>
       </div>
     </div>
     <script src="./../js/share/calendar.js"></script>
