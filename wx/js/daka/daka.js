@@ -413,6 +413,7 @@ function initOneStep(){
       console.log("0. Exception")
     },
     success: function(result){
+      // 微信config配置
       dakaObj.setUserId(result.openid);
       $("#nickname").html(result.nickname);
       $("#imgUser").attr("src",result.headimgurl);
@@ -444,6 +445,19 @@ function initOneStep(){
           }
         }
       });
+
+      // 微信配置
+      if(result.timestamp != null){
+        var sharer = new WxShare(
+          result.timestamp,
+          result.nonceStr,
+          result.signature,
+          result.nickname,
+          result.openid,
+          dakaObj.year(),
+          dakaObj.month()
+        );
+      }
     }
   }); // END: 用户信息初始化
 };

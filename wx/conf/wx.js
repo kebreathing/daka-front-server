@@ -13,6 +13,10 @@ var wxlink = {
   URL_UserInfo: function(ACCESS_TOKEN,OPEN_ID){
     return "https://api.weixin.qq.com/sns/userinfo?access_token=" + ACCESS_TOKEN +
            "&openid=" + OPEN_ID + "&lang=zh_CN";
+  },
+  URL_JSTIKECT: function(ACCESS_TOKEN){
+    return "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=" + ACCESS_TOKEN
+          + "&type=jsapi";
   }
 }
 

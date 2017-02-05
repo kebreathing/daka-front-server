@@ -5,6 +5,7 @@
 var conf = {
   dev_port: 80,
   test_port: 8222,
+  url: "www.jyufit.cc",
   sql:{
     host: "localhost",
     port: 8080,
@@ -15,9 +16,6 @@ var conf = {
     URL_USERGET: function(openid){
       return "http://"+this.host+":"+this.port+"/"+this.part+"/user/get?userId=" + openid;
     }
-  },
-  URL_USERSESSION: function(){
-    return "http://locahost:8080/wxauth/daka/session";
   }
 }
 
