@@ -140,7 +140,6 @@ var initContentPart = function(){
                 console.log("H. Exception")
               },
               success: function(msg){
-                console.log("H. Get the number of dakaed boys.")
                 dakaObj.setFriends(msg);
                 $("#spanSum").text(msg);
               }
@@ -156,7 +155,6 @@ var initContentPart = function(){
                 console.log("F. Exception")
               },
               success: function(msg){
-                console.log("F. Save your calendar information.")
                 if(msg.length != 0){
                   TBCalendar.setPrintedCalendars(msg.calendar,msg.trainCalendar,"banner" + msg.month);
                   if(dakaObj.getSigned())
@@ -175,7 +173,6 @@ var initContentPart = function(){
                 console.log("G. Exception")
               },
               success: function(msg){
-                console.log("G. Save your sum.")
               }
             })
           }
@@ -207,10 +204,11 @@ var initSlideCal = function(){
             tmonth: dakaObj.month(),
             tdate : dakaObj.date()
           });
-          if(dakaCalendar.month == 1)
+          console.log("pre:" + dakaCalendar.month)
+          if(dakaCalendar.month == 1){
             $("#imgLeft").attr("src","./../img/daka2/arrow-left%20ed.png");
-          else
-            $("#imgRight").attr("src","./../img/daka2/arrow-right.png");
+          }
+          $("#imgRight").attr("src","./../img/daka2/arrow-right.png");
         }
       } else {
         if(dakaCalendar.month < dakaCalendar.getRightMax()){
@@ -225,10 +223,9 @@ var initSlideCal = function(){
             tmonth: dakaObj.month(),
             tdate : dakaObj.date()
           });
-          if(dakaCalendar.month == 12)
+          if(dakaCalendar.month == dakaCalendar.getRightMax())
             $("#imgRight").attr("src","./../img/daka2/arrow-right%20ed.png");
-          else
-            $("#imgLeft").attr("src","./../img/daka2/arrow-left.png");
+          $("#imgLeft").attr("src","./../img/daka2/arrow-left.png");
         }
       }
   });
@@ -352,7 +349,6 @@ function init(){
               console.log("B. Exception")
             },
             success: function(msg){
-              console.log("B. Get the Detailed Daka of today");
               if(msg.length != 0){
                 // console.log("已经签到")
                 dakaObj.setContent(msg.practise);
@@ -466,7 +462,6 @@ $(document).ready(function(){
   // 基础配置 及 绑定
   defaultPageCal();     // 设置日历
   defaultSmoothCal();   // 设置日历滑动
-
 
   // 带参数配置
   initOneStep();

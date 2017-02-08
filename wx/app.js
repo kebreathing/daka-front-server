@@ -55,7 +55,7 @@ app.get('/wxauth/daka',function(req,res){
               req.session.jsapi_ticket = tickets.ticket;
               // 获取用户信息
               request.get({
-                url : wxconf.URL_UserInfo(json.access_token,json.openid)
+                url : wxconf.URL_UserInfo(ask.access_token,ask.openid)
               },
               function(error,response,body){
                 if(!error && response.statusCode == 200){
@@ -133,7 +133,7 @@ app.get("/wxauth/daka/session",function(req,res){
       nonceStr: cryptjson.nonceStr,
       signature: cryptjson.signature
     });
-    
+
   } else {
     res.send({
       openid: 1,

@@ -25,7 +25,7 @@ var DakaCalendar = function(){
   this.month= date.getMonth() + 1;
   this.banner = date.getMonth() + 1;
   var rightBool = false;
-  var rightmax = 12;
+  var rightmax = this.month;
   var leftBool = false;
   var leftmin = 1;
 

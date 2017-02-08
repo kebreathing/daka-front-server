@@ -34,7 +34,7 @@ var WxShare = function(timestamp,nonceStr,signature,nickname,openId,year,month){
     }); // END: 微信分享朋友圈
 
     wx.onMenuShareAppMessage({
-        title: title
+        title: title,
         desc: desc,
         link: link,
         imgUrl: imgUrl,

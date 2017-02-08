@@ -24,7 +24,6 @@ $(document).ready(function(){
     },
     success: function(result) {
       if(result == null || result.length == 0) return;
-      console.log(result)
       $("#nickname").html(result.user.nickname);
       $("#imgUser").attr("src",result.user.headimgurl);
       $("#dakanums").text(result.signed);

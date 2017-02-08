@@ -2,7 +2,7 @@
 * Configuration for web
 */
 var webObj = {
-  shost: "localhost",
+  shost: "localhost", // 改域名
   sport: 8222,
   host: "localhost",
   port: 8080,
