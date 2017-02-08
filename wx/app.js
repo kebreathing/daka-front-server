@@ -165,5 +165,5 @@ app.get("/share",function(req,res){
 var server = app.listen(webconf.test_port,function(){
   var host = server.address().address;
   var port = server.address().port;
-  console.log("Front-Server is start at http://%s:%s",host,port);
+  console.log("Front-Server is starting at PORT: " + port);
 });

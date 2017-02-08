@@ -11,9 +11,9 @@
   src: url("./../../font/PingFangSC-Regular.ttf")
 }
 .bgkcontainer {
-  background: -moz-linear-gradient(left, #333333, #0f0f0f,#333333);
-  background: -webkit-linear-gradient(left, #333333, #0f0f0f,#333333);
-  background: -o-linear-gradient(left, #333333, #0f0f0f,#333333);
+  background: -moz-linear-gradient(left, #222222, #0f0f0f,#222222);
+  background: -webkit-linear-gradient(left, #222222, #0f0f0f,#222222);
+  background: -o-linear-gradient(left, #222222, #0f0f0f,#222222);
   height: 100%;
   overflow: hidden;
 }
@@ -103,9 +103,9 @@ body{
 .bgk2container {
   /*background: url('./../../img/dakahome/background.png');
   background-size: contain;*/
-  background: -moz-linear-gradient(left, #333333, #0f0f0f,#333333);
-  background: -webkit-linear-gradient(left, #333333, #0f0f0f,#333333);
-  background: -o-linear-gradient(left, #333333, #0f0f0f,#333333);
+  background: -moz-linear-gradient(left, #222222, #0f0f0f,#222222);
+  background: -webkit-linear-gradient(left, #222222, #0f0f0f,#222222);
+  background: -o-linear-gradient(left, #222222, #0f0f0f,#222222);
   height: 100%;
   overflow: hidden;
 }

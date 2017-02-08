@@ -23,6 +23,7 @@ var weblink = {
   postCalBetter: url + "/calendar/better",
   getCalendar:   url + "/calendar/get",
   getInitDaka: url + "/init",
+  postActDaka: url + "/act",
   getUserSession: "http://" + webObj.shost + ":" + webObj.sport + "/wxauth/daka/session"
 }
 
