@@ -3,12 +3,12 @@
 */
 @font-face {
   font-family: "EurostileMN";
-  src: url("./../../font/eurostile_mn_extended.ttf");
+  src: url("./../../font/eurostile_mn_extended_simple.ttf");
 }
 
 @font-face {
   font-family: "PingFangSC";
-  src: url("./../../font/PingFangSC-Regular.ttf")
+  src: url("./../../font/PingFangSC-Regular_simple.ttf")
 }
 .bgkcontainer {
   background: -moz-linear-gradient(left, #222222, #0f0f0f,#222222);
@@ -228,15 +228,32 @@ body{
 
 /* Daka 2*/
 .part-calendar{
-  height: 85%;
+  height: 60%;
 }
 
 .part-slide{
-  height: 6%;
+  height: 10%;
 }
 
 .part-table{
-  height: 58%;
+  height: 94%;
+}
+
+.part-adv {
+  height: 36%;
+  text-align: center;
+}
+
+.part-adv label{
+  object-fit: contain;
+  font-family: PingFangSC;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #9b9b9b;
 }
 
 /*分享页面*/
@@ -326,7 +343,7 @@ body{
   background-color: #1d976c;
 }
 
-.table-banner{  margin-top: 5%; height: 43%;}
+.table-banner{  margin-top: 5%; height: 90%;}
   .table-banner table {  width: 100%; }
       .table-banner table td{
           width: 45px;

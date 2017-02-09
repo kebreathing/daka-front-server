@@ -1,6 +1,16 @@
 /**
 * For share.html
 */
+@font-face {
+  font-family: "EurostileMN";
+  src: url("./../../font/eurostile_mn_extended_simple.ttf");
+}
+
+@font-face {
+  font-family: "PingFangSC";
+  src: url("./../../font/PingFangSC-Regular_simple.ttf")
+}
+
 .bgk2container{
   background: -moz-linear-gradient(left, #333333, #0f0f0f,#333333);
   background: -webkit-linear-gradient(left, #333333, #0f0f0f,#333333);
